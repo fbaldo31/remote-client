@@ -1,4 +1,19 @@
-# angular-electron-starter
+# remote-client
+
+A modern client to connect you server.
+
+This project uses the following Open source technos:
+
+- Nodejs
+- Angular
+- Electron
+- Typescript
+
+## Pre-requisites
+
+- Nodejs 8+
+- Yarn (optional)
+- Python 2.7 (required for sass build)
 
 ## Install
 

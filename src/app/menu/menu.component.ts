@@ -12,7 +12,7 @@ import { ElectronService } from 'ngx-electron';
 export class MenuComponent implements OnInit, AfterViewInit {
 
   userExists = false;
-  menu: MenuItem[];
+  menu: MenuItem[] = [];
 
   constructor(private router: Router, private server: ElectronService) { }
 
@@ -33,13 +33,11 @@ export class MenuComponent implements OnInit, AfterViewInit {
   }
 
   initMenu() {
-    this.menu = // this.server.remote.Menu.buildFromTemplate(
-      this.router.config.map((route: Route) => {
-      return { label: route.path, routerLink: [route.path] };
-        // click: () => this.router.navigate([route.path]) };
+    this.router.config.forEach((route: Route) => {
+      if (!route.path.includes('/:')) {
+        this.menu.push({ label: route.path, routerLink: [route.path] });
+      }
    });
-   // );
-    // this.server.remote.Menu.setApplicationMenu(menu);
   }
 
   ngAfterViewInit() {
