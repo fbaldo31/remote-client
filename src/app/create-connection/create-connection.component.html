@@ -1,0 +1,72 @@
+
+<h2 class="first">Add a connection</h2>
+<form [formGroup]="addConnectionForm" (ngSubmit)="register($event)" class="ui-g ui-fluid">
+<div class="ui-g-12 ui-md-6">
+    <!-- Type -->
+    <div class="ui-g-12 ui-md-6">
+        <p-selectButton [options]="choiceTypes" formControlName="type" name="type"></p-selectButton>        
+    </div>
+    <!-- Name -->
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="fa fa-server"></i></span>
+            <input type="text" pInputText placeholder="Name" formControlName="name" name="name" required>         
+        </div>
+    </div>
+    <!-- Host -->
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="fa fa-server"></i></span>
+            <input type="text" pInputText placeholder="Host" formControlName="host" name="host" required>         
+        </div>
+    </div>
+    <!-- User -->
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+            <input type="text" pInputText placeholder="Username" formControlName="user" name="user" required>         
+        </div>
+    </div>
+    
+    <!--Pass -->
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="pi pi-key"></i></span>
+            <input type="{{ passVisible ? 'text': 'password'}}" pPassword placeholder="Password" name="pass" formControlName="pass" required>
+            <span class="ui-inputgroup-addon click" (click)="passVisible = !passVisible"><i class="fa fa-eye"></i></span>      
+        </div>
+    </div>
+
+    <!--Pass Confirm -->
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="pi pi-key"></i></span>
+            <input appPasswordConfirm type="{{ passConfVisible ? 'text': 'password'}}" pPassword placeholder="Confirm password" name="passConf" formControlName="passConf" required>
+            <span class="ui-inputgroup-addon click" (click)="passConfVisible = !passConfVisible"><i class="fa fa-eye"></i></span>      
+        </div>
+        <div *ngIf="addConnectionForm.errors?.passwordMatch && (addConnectionForm.touched || addConnectionForm.dirty)" class="cross-validation-error-message alert alert-danger">
+            Password didn't matched.
+        </div>
+    </div>
+
+    <!--Remote path -->
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="pi">/</i></span>
+            <input type="text" pInputText placeholder="Remote default path" formControlName="remotePath" name="remotePath">         
+        </div>
+    </div>
+
+    <!--Local Path -->
+    
+    <div class="ui-g-12 ui-md-6">
+        <div class="ui-inputgroup">
+            <span (click)="openFolder($event)" class="ui-inputgroup-addon"><i class="pi">/</i></span>
+            <input (click)="openFolder($event)" type="text" pInputText placeholder="Local default folder path" formControlName="localPath" name="localPath">
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-12">
+        <p-button label="Register" icon="pi pi-check" iconPos="left" type="submit" class="ui-button-raised" style="width:100%"></p-button>
+    </div>
+</div>
+</form>

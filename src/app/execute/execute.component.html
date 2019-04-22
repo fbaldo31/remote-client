@@ -1,0 +1,35 @@
+<!-- Menu -->
+<p-menubar *ngIf="selected.type === 'd'" [model]="folderMenu"></p-menubar>
+<p-menubar *ngIf="selected.type !== 'd'" [model]="fileMenu"></p-menubar>
+
+<!-- Accordion -->
+<p-accordion [multiple]="true">
+
+    <!-- Details  -->
+    <p-accordionTab header="Details" [selected]="true">
+           {{this.selected[0]|json}}
+        <div *ngFor="let item of selected.children">
+            <p>
+                {{item.label}} 
+                <!-- User: <span>{{item.rigths.user}}</span>
+                Group: <span>{{item.rigths.group}}</span>
+                Other: <span>{{item.rigths.other}}</span>-->
+            </p>
+        </div>
+    </p-accordionTab>
+
+    <!-- Logs -->
+    <p-accordionTab header="Logs" [selected]="true">
+        <p-editor [(ngModel)]="logs" [style]="{'height':'320px'}" [readonly]="true">
+            
+        <p-header>
+            <button pButton type="button" label="Clear" icon="pi pi-times" (click)="logs=null"></button></p-header>
+        </p-editor>
+    </p-accordionTab>
+
+    <!-- Terminal -->
+    <p-accordionTab header="Console" [selected]="terminalOpened">
+       <p-terminal welcomeMessage="Connected." prompt=" $"></p-terminal>
+    </p-accordionTab>
+</p-accordion>
+

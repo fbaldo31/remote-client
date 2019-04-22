@@ -1,4 +1,16 @@
-# RemoteClient
+# angular-electron-starter
+
+## Install
+
+`yarn`
+
+## Run
+
+`npm serve` then `npm run electron`
+
+To create a package, please read the @angular-guru/electron-builder documentation
+
+-----------------------------------------------------
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.4.
 

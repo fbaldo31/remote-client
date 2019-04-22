@@ -1,0 +1,17 @@
+<!-- Spinner -->
+<div *ngIf="isLoding"><i class="pi pi-spin pi-spinner"></i></div>
+
+<!-- Button -->
+<div class="ui-g-12 ui-md-12">
+  <p *ngIf="!isLoding && connectionNames.length === 0">No connection found.</p>
+  <a href pButton label="Add a connection" icon="pi pi-chevron-right" iconPos="left" [routerLink]="['/add-connection']" class="ui-button-raised"></a>
+</div>
+{{isLoding}}
+<!-- Connections -->
+<div *ngIf="!isLoding && connectionNames.length > 0">
+  <div *ngFor="let name of connectionNames; let i = index">
+    {{name}}
+    <a href pButton [routerLink]="['/connect', name]" label="Connect" icon="pi pi-login" iconPos="right" class="ui-button-raised"></a>
+    
+  </div>
+</div>

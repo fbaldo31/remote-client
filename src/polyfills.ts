@@ -73,11 +73,13 @@
  *  (window as any).__Zone_enable_cross_context_check = true;
  *
  */
-
+(window as any).global = window;
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
-import 'zone.js/dist/zone';  // Included with Angular CLI.
+// import 'zone.js/dist/zone'; // originally added by angular-cli, comment it out
+import 'zone.js/dist/zone-mix'; // add zone-mix to patch both Browser and Nodejs
+import 'zone.js/dist/zone-patch-electron'; // add zone-patch-electron to patch Electron native API
 
 
 /***************************************************************************************************

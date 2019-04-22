@@ -1,1 +1,36 @@
-/* You can add global styles to this file, and also import other style files */
+/* THEME */
+$dark: #323741;
+$blue: #323741;
+$green: #45C48B;
+$yellow: #FFD039;
+$orange: #F47942;
+
+/* MAIN */
+body {
+    background: #323741;
+}
+
+body .ui-button, body .ui-button:hover,
+ body div.ui-selectbutton .ui-button.ui-state-active, 
+body .ui-selectbutton .ui-button.ui-state-focus, body .ui-selectbutton .ui-button.ui-state-active:not(.ui-state-disabled):hover {
+    background-color: #06858C;
+    border: 1px solid #06858C;
+}
+/* FORMS */
+form.ui-g.ui-fluid > div.ui-md-6 {
+    margin: auto;
+}
+.ui-fluid {
+    .ui-inputgroup {
+        .ng-valid[required], .ng-valid.required  {
+            border-left: 5px solid $green;
+        }
+
+        .ng-invalid:not(form), .ng-dirty  {
+            border-left: 5px solid $orange;
+        }
+        .ui-inputgroup-addon.click {
+            cursor: pointer;
+        }
+    }
+}

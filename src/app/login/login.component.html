@@ -1,0 +1,24 @@
+<h2 class="first center">Login</h2>
+<form [formGroup]="loginForm" (ngSubmit)="login($event)" class="ui-g ui-fluid">
+<div class="ui-g-12 ui-md-6">
+    <!-- User -->
+    <div class="ui-g-12 ui-md-12">
+        <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+            <input type="text" pInputText placeholder="Username" name="user" formControlName="user" required>         
+        </div>
+    </div>
+    
+    <!--Pass -->
+    <div class="ui-g-12 ui-md-12">
+        <div class="ui-inputgroup">
+            <span class="ui-inputgroup-addon"><i class="pi pi-key"></i></span>
+            <input type="{{ passVisible ? 'text': 'password'}}" pPassword placeholder="Password" name="passwd" formControlName="pass" required>
+            <span class="ui-inputgroup-addon click" (click)="passVisible = !passVisible"><i class="fa fa-eye"></i></span>      
+        </div>
+    </div>
+    <div class="ui-g-12 ui-md-12">
+        <p-button label="Login" icon="pi pi-check" iconPos="left" type="submit" class="ui-button-raised" style="width:100%"></p-button>
+    </div>
+    </div>
+</form>

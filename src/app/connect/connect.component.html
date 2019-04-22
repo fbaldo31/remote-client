@@ -1,0 +1,23 @@
+<p *ngIf="isLoading && !selected">
+    Connection to {{connection.name}} in progress...</p>
+<p *ngIf="!isLoading || !selected">
+    Connected to {{connection.name}} 
+    <p-button label="Disconnect" icon="fa fa-close" iconPos="left" (ngClick)="disconnect()" class="ui-button-raised ui-button-danger"></p-button>
+</p>
+<div class="p-grid p-dir-rev">
+    <div *ngIf="selected" class="p-col">
+        <!-- Execute Menu -->
+        <app-execute [selected]="selected" (action)="execute($event)"></app-execute>
+    </div>
+    <div class="p-col">
+        
+        <p-tree [value]="tree" [loading]="isLoading"
+            (onNodeExpand)="openFolder($event)" (onNodeSelect)="selectTreeNode($event)" (onNodeCollapse)="closeFolder($event)"
+            selectionMode="single" [(selection)]="selected" [contextMenu]="cm"></p-tree>
+        
+        <!-- Context Menu -->
+        <p-contextMenu #cm [model]="contextMenu"></p-contextMenu>
+        <pre>{{selected.fullPath|json}}</pre>
+    </div>
+    
+</div>
